@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Day1": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Repos\\advent2022\\Day1"
+    }
+  }
+}
