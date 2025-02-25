@@ -1,7 +1,7 @@
 ﻿int containCount = 0;
 int overlapCount = 0;
 
-foreach (string row in File.ReadAllLines("day4.txt")) {
+foreach (string row in File.ReadAllLines("puzzle.txt")) {
 
     string[] pairs = row.Split(',');
     int[] range1 = pairs[0].Split('-').Select(e => Convert.ToInt32(e)).ToArray();
@@ -18,5 +18,5 @@ foreach (string row in File.ReadAllLines("day4.txt")) {
     }
 }
 
-Console.WriteLine($"Puzzle 1 answer : Total score = {containCount}");
-Console.WriteLine($"Puzzle 2 answer : Total score = {overlapCount}");
+Console.WriteLine($"Part 1 answer : {containCount}");
+Console.WriteLine($"Part 2 answer : {overlapCount}");

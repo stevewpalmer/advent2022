@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-List<List<Point>> paths = File.ReadAllLines("day14.txt")
+List<List<Point>> paths = File.ReadAllLines("puzzle.txt")
     .Select(l => l.Split(" -> ")
     .Select(p => p.Split(','))
     .Select(x => new Point(Convert.ToInt32(x[0]), Convert.ToInt32(x[1])))
@@ -58,5 +58,5 @@ while (count1 == 0 || count2 == 0) {
     s = new(500, 0);
 }
 
-Console.WriteLine($"Puzzle 1 answer : {count1} units of sand.");
-Console.WriteLine($"Puzzle 2 answer : {count2} units of sand.");
+Console.WriteLine($"Part 1 answer : {count1}");
+Console.WriteLine($"Part 2 answer : {count2}");

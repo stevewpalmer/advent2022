@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-Stack<int> directorySizes = new();
+﻿Stack<int> directorySizes = new();
 Stack<int> traverse = new();
 
-foreach (string line in File.ReadAllLines("day7.txt")) {
+foreach (string line in File.ReadAllLines("puzzle.txt")) {
 
     string[] parts = line.Split(' ');
     if (parts[0] == "$" && parts[1] == "cd") {
@@ -28,5 +25,5 @@ while (traverse.Count > 0) {
     directorySizes.Push(totalDiskSize);
 }
 
-Console.WriteLine($"Puzzle 1 answer : Answer = {directorySizes.Where(d => d <= 100000).Sum()}");
-Console.WriteLine($"Puzzle 2 answer : Answer = {directorySizes.Where(d => d >= totalDiskSize - 40000000).Min()}");
+Console.WriteLine($"Part 1 answer : {directorySizes.Where(d => d <= 100000).Sum()}");
+Console.WriteLine($"Part 2 answer : {directorySizes.Where(d => d >= totalDiskSize - 40000000).Min()}");

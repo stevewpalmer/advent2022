@@ -12,7 +12,7 @@ char Common3(string first, string second, string third) =>
 
 int Priority(char ch) => char.IsLower(ch) ? ch - 'a' + 1 : ch - 'A' + 27;
 
-foreach (string line in File.ReadAllLines("day3.txt")) {
+foreach (string line in File.ReadAllLines("puzzle.txt")) {
 
     string rucksack1 = line.Substring(0, line.Length / 2);
     string rucksack2 = line.Substring(rucksack1.Length);
@@ -26,5 +26,5 @@ foreach (string line in File.ReadAllLines("day3.txt")) {
     }
 }
 
-Console.WriteLine($"Puzzle 1 answer : Total score = {totalPriority}");
-Console.WriteLine($"Puzzle 2 answer : Total score = {totalGroups}");
+Console.WriteLine($"Part 1 answer : {totalPriority}");
+Console.WriteLine($"Part 2 answer : {totalGroups}");

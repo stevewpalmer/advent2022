@@ -1,4 +1,4 @@
-﻿int[][] input = File.ReadAllLines("day8.txt").Select(l => l.ToCharArray().Select(p => p - '0').ToArray()).ToArray();
+﻿int[][] input = File.ReadAllLines("puzzle.txt").Select(l => l.ToCharArray().Select(p => p - '0').ToArray()).ToArray();
 int maxColumn = input[0].Length;
 int maxRow = input.Length;
 
@@ -40,5 +40,5 @@ for (int row = 0; row < maxRow; row++) {
     }
 }
 
-Console.WriteLine($"Puzzle 1 answer : Answer = {countOfVisible}");
-Console.WriteLine($"Puzzle 2 answer : Answer = {maxScenicScore}");
+Console.WriteLine($"Part 1 answer : {countOfVisible}");
+Console.WriteLine($"Part 2 answer : {maxScenicScore}");

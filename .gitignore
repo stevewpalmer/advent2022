@@ -1,6 +1,8 @@
-.DS_Store
-.vs/
-obj/
 bin/
-*.csproj.user
+obj/
+.idea
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+puzzle.txt
 

@@ -25,7 +25,7 @@ int CalculatePlay(int theirPlay, int yourPlay) {
     return yourPlay;
 }
 
-foreach (string line in File.ReadAllLines("day2.txt")) {
+foreach (string line in File.ReadAllLines("puzzle.txt")) {
 
     string[] plays = line.Split(' ');
     int theirPlay = 0;
@@ -51,5 +51,5 @@ foreach (string line in File.ReadAllLines("day2.txt")) {
     }
 }
 
-Console.WriteLine($"Puzzle 1 answer : Total score = {totalScore}");
-Console.WriteLine($"Puzzle 2 answer : Total score = {totalStrategyScore}");
+Console.WriteLine($"Part 1 answer : {totalScore}");
+Console.WriteLine($"Part 2 answer : {totalStrategyScore}");

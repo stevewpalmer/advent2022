@@ -1,4 +1,4 @@
-﻿string input = File.ReadAllText("day6.txt");
+﻿string input = File.ReadAllText("puzzle.txt");
 
 int FindMarker(int packetSize) {
 
@@ -11,5 +11,5 @@ int FindMarker(int packetSize) {
     return -1;
 }
 
-Console.WriteLine($"Puzzle 1 answer : Answer = {FindMarker(4)}");
-Console.WriteLine($"Puzzle 2 answer : Answer = {FindMarker(14)}");
+Console.WriteLine($"Part 1 answer : {FindMarker(4)}");
+Console.WriteLine($"Part 2 answer : {FindMarker(14)}");

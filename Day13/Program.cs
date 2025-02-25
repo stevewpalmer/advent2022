@@ -11,16 +11,16 @@ int ComparePackets(JsonElement p1, JsonElement p2) {
         case JsonValueKind.Number when p2.ValueKind == JsonValueKind.Array:
             return ComparePackets(JsonSerializer.SerializeToElement(new JsonArray(p1.GetInt32())), p2);
         case JsonValueKind.Array when p2.ValueKind == JsonValueKind.Array: {
-                for (int i = 0; i < p1.GetArrayLength() && i < p2.GetArrayLength(); i++) {
+            for (int i = 0; i < p1.GetArrayLength() && i < p2.GetArrayLength(); i++) {
 
-                    int result = ComparePackets(p1[i], p2[i]);
-                    if (result == 0) {
-                        continue;
-                    }
-                    return result;
+                int result = ComparePackets(p1[i], p2[i]);
+                if (result == 0) {
+                    continue;
                 }
-                return p1.GetArrayLength() - p2.GetArrayLength();
+                return result;
             }
+            return p1.GetArrayLength() - p2.GetArrayLength();
+        }
         default:
             return 0;
     }
@@ -28,7 +28,7 @@ int ComparePackets(JsonElement p1, JsonElement p2) {
 
 int CompareAllPackets() {
 
-    List<(JsonElement, JsonElement)> input = File.ReadAllText("day13.txt")
+    List<(JsonElement, JsonElement)> input = File.ReadAllText("puzzle.txt")
         .Split("\n\n")
         .Select(pair => pair.Split('\n'))
         .Select(pair => (Left: JsonDocument.Parse(pair[0]).RootElement, Right: JsonDocument.Parse(pair[1]).RootElement))
@@ -48,7 +48,7 @@ int OrderPackets() {
     JsonElement divider1 = JsonDocument.Parse("[[2]]").RootElement;
     JsonElement divider2 = JsonDocument.Parse("[[6]]").RootElement;
 
-    List<JsonElement> input = File.ReadAllText("day13.txt")
+    List<JsonElement> input = File.ReadAllText("puzzle.txt")
         .Split("\n")
         .Where(line => !string.IsNullOrEmpty(line))
         .Select(line => JsonDocument.Parse(line).RootElement)
@@ -60,5 +60,5 @@ int OrderPackets() {
     return (input.IndexOf(divider1) + 1) * (input.IndexOf(divider2) + 1);
 }
 
-Console.WriteLine($"Puzzle 1 answer : Answer = {CompareAllPackets()}");
-Console.WriteLine($"Puzzle 2 answer : Answer = {OrderPackets()}");
+Console.WriteLine($"Part 1 answer : {CompareAllPackets()}");
+Console.WriteLine($"Part 2 answer : {OrderPackets()}");

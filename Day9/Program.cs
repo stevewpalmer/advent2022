@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-string[] input = File.ReadAllLines("day9.txt");
+string[] input = File.ReadAllLines("puzzle.txt");
 
 int ModelKnots(int count) {
 
@@ -40,5 +40,5 @@ int ModelKnots(int count) {
     return map.Count;
 }
 
-Console.WriteLine($"Puzzle 1 answer : Answer = {ModelKnots(2)}");
-Console.WriteLine($"Puzzle 2 answer : Answer = {ModelKnots(10)}");
+Console.WriteLine($"Part 1 answer : {ModelKnots(2)}");
+Console.WriteLine($"Part 2 answer : {ModelKnots(10)}");

@@ -1,9 +1,9 @@
 ﻿using System.Text.RegularExpressions;
 
-List<Stack<char>> stacks1 = new();
-List<Stack<char>> stacks2 = new();
+List<Stack<char>> stacks1 = [];
+List<Stack<char>> stacks2 = [];
 
-string [] input = File.ReadAllLines("day5.txt");
+string [] input = File.ReadAllLines("puzzle.txt");
 
 int endOfMap = Array.FindIndex(input, l => l.Length == 0);
 
@@ -51,5 +51,5 @@ for (int line = endOfMap + 1; line < input.Length; line++) {
 string topCrates1 = string.Join("", stacks1.Select(s => s.Peek()).ToArray());
 string topCrates2 = string.Join("", stacks2.Select(s => s.Peek()).ToArray());
 
-Console.WriteLine($"Puzzle 1 answer : Answer = {topCrates1}");
-Console.WriteLine($"Puzzle 2 answer : Answer = {topCrates2}");
+Console.WriteLine($"Part 1 answer : {topCrates1}");
+Console.WriteLine($"Part 2 answer : {topCrates2}");

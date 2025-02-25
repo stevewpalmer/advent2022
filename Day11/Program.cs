@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Day11;
 
 public class Monkey {
-    public Queue<long> startingItems = new();
-    public string[] operation = Array.Empty<string>();
     public int divisible;
-    public int trueMonkey;
     public int falseMonkey;
     public long inspected;
-};
+    public string[] operation = [];
+    public Queue<long> startingItems = new();
+    public int trueMonkey;
+}
 
-internal class Day11 {
+internal static class Day11 {
     private static bool MatchNumber(string r, string s, out int m) {
         m = 0;
         if (s.Contains(r)) {
@@ -23,47 +22,45 @@ internal class Day11 {
     }
 
     private static bool MatchText(string r, string s, string p, out string[] m) {
-        m = !s.Contains(r) ? Array.Empty<string>() :
-            new Regex(p).Matches(s)[0].Groups.Values.Skip(1).Select(x => x.ToString()).ToArray();
+        m = !s.Contains(r) ? [] : new Regex(p).Matches(s)[0].Groups.Values.Skip(1).Select(x => x.ToString()).ToArray();
         return m.Length > 0;
     }
 
     private static bool MatchString(string r, string s, string p, out long[] m) {
-        m = !s.Contains(r) ? Array.Empty<long>() :
-            new Regex(p).Matches(s).Select(x => long.Parse(x.Value)).ToArray();
+        m = !s.Contains(r) ? [] : new Regex(p).Matches(s).Select(x => long.Parse(x.Value)).ToArray();
         return m.Length > 0;
     }
 
-    public static long Calculate(int totalRounds) {
+    private static long Calculate(int totalRounds) {
 
         Dictionary<int, Monkey> monkies = new();
-        Monkey monkey = new Monkey();
+        Monkey monkey = new();
 
-        Array.ForEach(File.ReadAllLines("day11.txt"), line => {
+        Array.ForEach(File.ReadAllLines("puzzle.txt"), line => {
 
             switch (line) {
-                case { } when MatchNumber(@"Monkey", line, out int _number):
+                case { } when MatchNumber("Monkey", line, out int _number):
                     monkey = new Monkey();
                     monkies[_number] = monkey;
                     break;
 
-                case { } when MatchString(@"Starting items", line, @"\d+", out long[] _startingItems):
+                case { } when MatchString("Starting items", line, @"\d+", out long[] _startingItems):
                     monkey.startingItems = new Queue<long>(_startingItems);
                     break;
 
-                case { } when MatchText(@"Operation", line, @"old (\*|\+) (old|\d+)", out string[] _operation):
+                case { } when MatchText("Operation", line, @"old (\*|\+) (old|\d+)", out string[] _operation):
                     monkey.operation = _operation;
                     break;
 
-                case { } when MatchNumber(@"Test: divisible by", line, out int _divisible):
+                case { } when MatchNumber("Test: divisible by", line, out int _divisible):
                     monkey.divisible = _divisible;
                     break;
 
-                case { } when MatchNumber(@"If true", line, out int _trueMonkey):
+                case { } when MatchNumber("If true", line, out int _trueMonkey):
                     monkey.trueMonkey = _trueMonkey;
                     break;
 
-                case { } when MatchNumber(@"If false", line, out int _falseMonkey):
+                case { } when MatchNumber("If false", line, out int _falseMonkey):
                     monkey.falseMonkey = _falseMonkey;
                     break;
             }
@@ -88,7 +85,8 @@ internal class Day11 {
 
                     if (totalRounds == 20) {
                         worryLevel /= 3;
-                    } else {
+                    }
+                    else {
                         worryLevel %= 9699690;
                     }
 
@@ -104,7 +102,7 @@ internal class Day11 {
 
     public static void Main() {
 
-        Console.WriteLine($"Puzzle 1 answer : Total score = {Calculate(20)}");
-        Console.WriteLine($"Puzzle 2 answer : Total score = {Calculate(10000)}");
+        Console.WriteLine($"Part 1 answer : {Calculate(20)}");
+        Console.WriteLine($"Part 2 answer : {Calculate(10000)}");
     }
 }
